@@ -43,7 +43,7 @@ router.post("/signup", function(req, res) {
 
 //login for user
 router.post("/login", function(req, res) {
-  User.findOne({ where: { username: req.body.user.username } }).then(
+  User.findOne({ where: { email: req.body.user.email } }).then(
     user => {
       if (user) {
         bcrypt.compare(
@@ -92,10 +92,10 @@ router.delete("/:id/delete", (req, res) => {
 
 //create admin account
 
-router.post("/signup/admin", function(req, res) {
-  var username = req.body.user.username;
-  var firstname = req.body.user.firstname;
-  var lastname = req.body.user.lastname;
+router.post("/signupAdmin", function(req, res) {
+  var username = req.body.user.user.username;
+  var firstname = req.body.user.user.firstname;
+  var lastname = req.body.user.user.lastname;
   var email = req.body.user.email;
   var pass = req.body.user.password;
   var role = "admin";
@@ -126,7 +126,7 @@ router.post("/signup/admin", function(req, res) {
 });
 
 // /login for admin
-router.post("/login/admin", function(req, res) {
+router.post("/loginAdmin", function(req, res) {
   User.findOne({ where: { username: req.body.user.username } }).then(
     user => {
       if (user) {
