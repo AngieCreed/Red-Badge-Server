@@ -6,9 +6,9 @@ var Item = sequelize.import("../models/Item");
 router.post("/create", function(req, res) {
   if (!req.errors) {
     const itemFromRequest = {
-      title: req.body.item.title,
-      resource: req.body.item.resource,
-      comment: req.body.item.comment,
+      title: req.body.title,
+      resource: req.body.resource,
+      comment: req.body.comment,
       userId: req.user.id
     };
     Item.create(itemFromRequest)
@@ -33,7 +33,7 @@ router.get("/getall", (req, res) => {
 // edit item for user
 router.put("/:id/update", (req, res) => {
   if (!req.errors) {
-    Item.update(req.body.item, { where: { id: req.params.id } })
+    Item.update(req.body, { where: { id: req.params.id } })
       .then(item => res.status(200).json(item))
       .catch(err => res.json(req.errors));
   } else {
