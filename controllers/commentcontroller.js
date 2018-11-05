@@ -3,13 +3,30 @@ var sequelize = require("../db");
 var Comment = sequelize.import("../models/Comment");
 
 // create new comment for user
-router.post("/create", function(req, res) {
+// router.post("/create", function(req, res) {
+//   if (!req.errors) {
+//     const commentFromRequest = {
+//       content: req.body.content,
+//       userId: req.user.id,
+//       location: "redbadge",
+//       username: req.user.username
+//     };
+//     Comment.create(commentFromRequest)
+//       .then(comment => res.status(200).json(comment))
+//       .catch(err => res.json(req.errors));
+//   } else {
+//     res.status(500).json(req.errors);
+//   }
+// });
+
+// create new comment for user again
+router.post("/:username/create", function(req, res) {
   if (!req.errors) {
     const commentFromRequest = {
       content: req.body.content,
       userId: req.user.id,
       location: "redbadge",
-      username: req.user.username
+      username: req.params.username
     };
     Comment.create(commentFromRequest)
       .then(comment => res.status(200).json(comment))
