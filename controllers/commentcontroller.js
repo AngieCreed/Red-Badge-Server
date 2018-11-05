@@ -6,9 +6,10 @@ var Comment = sequelize.import("../models/Comment");
 router.post("/create", function(req, res) {
   if (!req.errors) {
     const commentFromRequest = {
-      title: req.body.comment.title,
-      content: req.body.comment.content,
-      userId: req.user.id
+      content: req.body.content,
+      userId: req.user.id,
+      location: "redbadge",
+      username: req.user.username
     };
     Comment.create(commentFromRequest)
       .then(comment => res.status(200).json(comment))
@@ -30,6 +31,17 @@ router.get("/getall", (req, res) => {
   Comment.findAll({
     where: {
       userId: req.user.id
+    }
+  })
+    .then(comment => res.status(200).json(comment))
+    .catch(err => res.status(500).json({ error: err }));
+});
+
+// get all comments for location
+router.get("/:location/getall", (req, res) => {
+  Comment.findAll({
+    where: {
+      location: req.params.location
     }
   })
     .then(comment => res.status(200).json(comment))
