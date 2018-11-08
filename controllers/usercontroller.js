@@ -92,10 +92,10 @@ router.delete("/:id/delete", (req, res) => {
 
 //create admin account
 
-router.post("/signupAdmin", function(req, res) {
-  var username = req.body.user.user.username;
-  var firstname = req.body.user.user.firstname;
-  var lastname = req.body.user.user.lastname;
+router.post("/signup/admin", function(req, res) {
+  var username = req.body.user.username;
+  var firstname = req.body.user.firstname;
+  var lastname = req.body.user.lastname;
   var email = req.body.user.email;
   var pass = req.body.user.password;
   var role = "admin";
@@ -126,8 +126,8 @@ router.post("/signupAdmin", function(req, res) {
 });
 
 // /login for admin
-router.post("/loginAdmin", function(req, res) {
-  User.findOne({ where: { username: req.body.user.username } }).then(
+router.post("/login/admin", function(req, res) {
+  User.findOne({ where: { email: req.body.user.email } }).then(
     user => {
       if (user) {
         bcrypt.compare(

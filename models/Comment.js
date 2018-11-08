@@ -1,9 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define("comment", {
-    title: {
+    content: {
       type: DataTypes.STRING
     },
-    content: {
+    location: {
+      type: DataTypes.STRING
+    },
+    username: {
       type: DataTypes.STRING
     }
   });
