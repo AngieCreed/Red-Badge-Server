@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var sequelize = require("../db");
-var Admin = sequelize.import("../models/Admin");
+
 var User = sequelize.import("../models/User");
 var Item = sequelize.import("../models/Item");
 var bcrypt = require("bcryptjs");
