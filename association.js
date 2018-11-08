@@ -15,4 +15,5 @@ Comment.belongsTo(User);
 
 sequelize.sync();
 
-// { force: true }
+// sequelize.sync({ force: true })
+

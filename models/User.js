@@ -7,7 +7,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     email: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      validate: {unique: true}
     },
     username: {
       type: DataTypes.STRING
