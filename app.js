@@ -4,7 +4,6 @@ var express = require("express");
 var app = express();
 
 var user = require("./controllers/usercontroller");
-var admin = require("./controllers/admincontroller");
 var item = require("./controllers/itemcontroller");
 var comment = require("./controllers/commentcontroller");
 
@@ -16,7 +15,6 @@ app.use(bodyParser.json());
 app.use(require("./middleware/headers"));
 
 app.use("/user", user);
-app.use("/admin", admin);
 
 app.use(require("./middleware/validate-session"));
 app.use("/item", item);
